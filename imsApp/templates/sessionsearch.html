@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <style>
+          .submitrbtn:hover {
+            opacity: 1;
+                }
+
+                                .submitrbtn {
+                background-color: #333333;
+                color: #ffa500;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+                }
+
+    </style>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="color:#ffa500;" >LTE </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/frontpage/frontpage/">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="/logout_emp/logout_emp/"style="margin-left:850px;color:#ffa500;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+    function submitPoll(id){
+      document.getElementById("votebutton").disabled = true;
+      setTimeout(function(){document.getElementById("votebutton").disabled = false;},5000);
+  }
+</script>
+</br>
+<h3 align="center">Session</h3></br>
+<table align="center" border="2" id="myTable">
+  <tr class="header">
+      <th style="width:15%;">session_id </th>
+    <th align="center" style="width:15%;">session_name</th>
+      <th style="width:15%;">chapter_id </th>
+      <th style="width:15%;">file </th>
+      <th style="width:15%;">Delete Chapter</th>
+    <th style="width:15%;">Edit Chapter</th>
+
+  </tr>
+   {% for i in session_search %}
+    <tr>
+        <td>{{ i.session_id }}</td>
+        <td>{{ i.session_name }}</td>
+        <td>{{ i.chapter_id }}</td>
+        <td><a href="{{ i.file.url}}">{{ i.file }}</a> </td>
+
+
+        <td><a href="/sessiondelete/{{ i.session_id }}" class="btn btn-primary" >Delete Session</a></td>
+        <td id="update"><a href="/sessionupdate/{{ i.session_id }}" class="btn btn-primary">Edit Session</a></td>
+
+    </tr>
+     {% endfor %}
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

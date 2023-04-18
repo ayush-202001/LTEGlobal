@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Chapter</title>
+  <style>
+          .submitrbtn:hover {
+            opacity: 1;
+                }
+
+                                .submitrbtn {
+                background-color: #333333;
+                color: #ffa500;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+                }
+
+  </style>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">LTE </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/frontpage/frontpage/">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="/logout_emp/logout_emp/"style="margin-left:850px;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+</head>
+<body>
+  <div class="container">
+    <h3 align="center"> COURSE </h3>
+    <hr>
+  <form align="center" method="POST" enctype="multipart/form-data" action="/sessioninsert/">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="file"> file :</label>
+      <input type="file" id="file" name="file"  ><br><br>
+
+    </div>
+
+
+
+  <label for="session_name"> Session :</label>
+  <input type="text" id="session_name" name="session_name" placeholder="enter session name" ><br><br>
+
+
+
+      <label for="chapter_id">Chapterid:</label>
+    <select class="form-control" type="text" id="chapter_id" name="chapter_id" style="width:200px;margin:0 auto;">
+<option>--Select--</option>
+{%for i in chapter_insert%}
+<option value="{{chapter_id}}" >{{i.chapter_name}}</option>
+{%endfor%}
+
+</select><br>
+
+
+
+<!--<h1>Video Uploader</h1>-->
+<!--<form enctype="multipart/form-data" method="POST" >-->
+<!--{% csrf_token %}-->
+<!--{{ form.as_p }}-->
+<!--<input type="submit" value="Upload"/>-->
+<!--</form>-->
+
+<!--<br><br>-->
+<!--<upload width='400' controls>-->
+<!--<source src='{{ MEDIA_URL }}{{ videofile }}' type='upload/mp4'>-->
+<!--Your browser does not support the upload tag.-->
+<!--</upload>-->
+<!--<br><br>-->
+<!--</p>-->
+
+  <button type="submit" class="save btn btn-default">Save</button>
+</div>
+</form>
+
+</body>
+</html>

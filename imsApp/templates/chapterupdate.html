@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update Chapter</title>
+  <style>
+          .submitrbtn:hover {
+            opacity: 1;
+                }
+
+                                .submitrbtn {
+                background-color: #333333;
+                color: #ffa500;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+                }
+
+  </style>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">LTE </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/frontpage/frontpage/">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="/logout_emp/logout_emp/"style="margin-left:850px;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+</head>
+<body>
+  <div class="container">
+    <h3 align="center"> Update Chapter </h3>
+    <hr>
+  <form align="center" method="POST" action="/chapterupdate/{{chapter_update.chapter_id}}">
+    {% csrf_token %}
+
+    <label for="chapter_name"> chapter name :</label>
+  <input type="text" id="chapter_name" name="chapter_name" placeholder="enter chapter name " value="{{ chapter_update.chapter_name }}"><br><br>
+
+      <label for="course_id">course id:</label>
+    <select class="form-control" type="text" id="course_id" name="course_id" style="width:200px;margin:0 auto;">
+<option>--Select--</option>
+{%for i in course_search%}
+<option value="{{i.course_id}}">{{i.course_name}}</option>
+{%endfor%}
+</select><br>
+
+  <button type="submit" class="submitrbtn">submit</button>
+</div>
+</form>
+
+</body>
+</html>

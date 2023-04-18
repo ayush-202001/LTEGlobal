@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Chapter</title>
+  <style>
+          .submitrbtn:hover {
+            opacity: 1;
+                }
+
+                                .submitrbtn {
+                background-color: #333333;
+                color: #ffa500;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+                }
+
+  </style>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">LTE </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/frontpage/frontpage/">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="/logout_emp/logout_emp/"style="margin-left:850px;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+</head>
+<body>
+  <div class="container">
+    <h3 align="center">LTE </h3>
+    <hr>
+  <br align="center" method="POST" action="/insertlte/">
+    {% csrf_token %}
+
+<label>Courses</label>
+<select name="course" id="course_id" class="form-control">
+            <option>--Select--</option>
+            {%for i in course_insert %}
+            <option value="{{i.course_id}}" {% if request.GET.course == i.course_id|lower%}selected{%endif%} >{{i.course_name}}</option>
+            {%endfor%}
+</select>
+<br>
+<label>Chapter</label>
+<select name="chapter" id="chapter_id" class="form-control">
+            <option>--Select--</option>
+            {%for i in chapter_insert %}
+            <option value="{{i.chapter_id}}" >{{i.chapter_name}}</option>
+            {%endfor%}
+  </select>
+      <br>
+            <label >Session</label>
+<select name="session" id="session_id" class="form-control">
+            <option>--Select--</option>
+            {%for i in session_insert %}
+            <option value="{{i.session_id}}" >{{i.session_name}}</option>
+            {%endfor%}
+  </select>
+  </br>
+      <h3 align="center"><button type="submit" ><a   href="/searchpdf/">SUBMIT</a></button></h3>
+</div>
+<!--  <script>-->
+<!--    function coursefield(){-->
+<!--        courseid = document.getElementById('course').value;-->
+<!--         window. location = "/?course="+courseid;-->
+<!--     }-->
+<!--    function chapterfield(){-->
+<!--       chapterid = document. t.getElementById('chapter').value;-->
+<!--       window. location = "/?course="+'{{request.GET.course}}'+"&chapter="+chapterid;-->
+<!--     }-->
+<!--</script>-->
+
+</form>
+
+</body>
+</html>

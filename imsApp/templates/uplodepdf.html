@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <form method="POST" class="post-form" enctype="multipart/form-data" action="/sessioninsert/">
+        {% csrf_token %}
+        <div class="form-group">
+      <label for="file"> file :</label>
+      <input type="file" id="file" name="file"  ><br><br>
+
+    </div>
+
+        <button type="submit" class="save btn btn-default">Save</button>
+</form>
+</body>
+</html>

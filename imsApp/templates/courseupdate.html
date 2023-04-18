@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update Chapter</title>
+  <style>
+          .submitrbtn:hover {
+            opacity: 1;
+                }
+
+                                .submitrbtn {
+                background-color: #333333;
+                color: #ffa500;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+                }
+
+  </style>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">LTE </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/frontpage/frontpage/">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="/logout_emp/logout_emp/"style="margin-left:850px;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+</head>
+<body>
+  <div class="container">
+    <h3 align="center"> Update Course </h3>
+    <hr>
+  <form align="center" method="POST" action="/courseupdate/{{course_update.course_id}}">
+    {% csrf_token %}
+
+    <label for="course_name"> Course Name :</label>
+  <input type="text" id="course_name" name="course_name" placeholder="enter course name " value="{{ course_update.course_name }}"><br><br>
+
+    <label for="course_fees"> Course Fees :</label>
+  <input type="text" id="course_fees" name="course_fees" placeholder="enter course Fees " value="{{ course_update.course_fees }}"><br><br>
+
+  <button type="submit" class="submitrbtn">submit</button>
+</div>
+</form>
+
+</body>
+</html>

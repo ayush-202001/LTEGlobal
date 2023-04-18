@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <style>
+          .submitrbtn:hover {
+            opacity: 1;
+                }
+
+                                .submitrbtn {
+                background-color: #333333;
+                color: #ffa500;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 20%;
+                opacity: 0.9;
+                }
+
+    </style>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="color:#ffa500;" >LTE </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/frontpage/frontpage/">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="/logout_emp/logout_emp/"style="margin-left:850px;color:#ffa500;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+    function submitPoll(id){
+      document.getElementById("votebutton").disabled = true;
+      setTimeout(function(){document.getElementById("votebutton").disabled = false;},5000);
+  }
+</script>
+</br>
+<h3 align="center">Course</h3></br>
+<table align="center" border="2" id="myTable">
+  <tr class="header">
+    <th align="center" style="width:15%;">id</th>
+    <th align="center" style="width:15%;">course_name</th>
+    <th align="center" style="width:15%;">course_fees</th>
+      <th style="width:15%;">Delete Course</th>
+    <th style="width:15%;">Edit Course</th>
+
+  </tr>
+   {% for i in course_search %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.course_name }}</td>
+        <td>{{ i.course_fees }}</td>
+
+        <td><a href="/coursedelete/{{ i.course_id }}" class="btn btn-primary" >Delete Course</a></td>
+        <td id="update"><a href="/courseupdate/{{ i.course_id }}" class="btn btn-primary">Edit Course</a></td>
+
+    </tr>
+     {% endfor %}
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

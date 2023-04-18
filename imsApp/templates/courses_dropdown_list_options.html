@@ -1,0 +1,6 @@
+<option value="">Select Course</option>
+{% for ser in course %}
+<option value="{{ ser.pk }}">{{ ser.course_name }}</option>
+{% endfor %}
+
+
